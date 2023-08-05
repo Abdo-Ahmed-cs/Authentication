@@ -12,10 +12,8 @@ export default function SingIn() {
     const [password, setPassword] = useState("")
     const [confpassword, setConfPassword] = useState("")
     const isdisabled = username && password && password === confpassword
-
     const createAccount = async () => {
-
-        const {data: users} = await axios.get(`${process.env.NEXTAUTH_URL}/api/users`)
+        const {data: users} = await axios.get(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`)
         const isfound = users.find((user) => user.name === username)
         console.log(isfound)
         if (isfound != null) {
@@ -24,7 +22,7 @@ export default function SingIn() {
         }
             setError(() => false)
             const newUser = {id: Date.now(), name: username, password}
-            const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/users`, newUser)
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`, newUser)
             setUsername(() => "")
             setPassword(() => "")
             setConfPassword(() => "")
