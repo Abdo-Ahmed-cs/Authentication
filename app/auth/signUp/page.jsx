@@ -15,7 +15,7 @@ export default function SingIn() {
 
     const createAccount = async () => {
 
-        const {data: users} = await axios.get("http://localhost:3000/api/users")
+        const {data: users} = await axios.get(`${process.env.NEXTAUTH_URL}/api/users`)
         const isfound = users.find((user) => user.name === username)
         console.log(isfound)
         if (isfound != null) {
@@ -24,7 +24,7 @@ export default function SingIn() {
         }
             setError(() => false)
             const newUser = {id: Date.now(), name: username, password}
-            const res = await axios.post("http://localhost:3000/api/users", newUser)
+            const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/users`, newUser)
             setUsername(() => "")
             setPassword(() => "")
             setConfPassword(() => "")
