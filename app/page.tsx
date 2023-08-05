@@ -13,6 +13,7 @@ export default function Home() {
       redirect("/auth/signIn?callbackUrl=/")
     },
   })
+  // console.log(session)
   return (
 <Box component="section" 
     sx={{

@@ -6,6 +6,12 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
     const newUser = await request.json()
-    users.push(newUser)
-    return new Response(JSON.stringify(newUser))
+    const authUser = await users.find((user: { name: string | undefined }) => user.name === newUser?.name)
+    if (authUser != undefined && authUser.password === newUser?.password) {
+        console.log(authUser)
+        return new Response(JSON.stringify(newUser))
+    } else {
+        users.push(newUser)
+        return new Response(JSON.stringify(newUser))
+    }
 }

@@ -24,14 +24,29 @@ export const options: NextAuthOptions = {
                 }
             },
             async authorize(credentials) {
-                const {data: users} = await axios.get(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`)
-                const authUser = await users.find((user: { name: string | undefined }) => user.name === credentials?.username)
-                console.log(authUser)
-                if (authUser && authUser.password === credentials?.password) {
-                    return authUser
+                const config = {
+                    headers: {
+                      "Content-Type": "application/json; charset=utf-8",
+                      corsOrigin: "*",
+                      "Access-Control-Allow-Origin": "*",
+                    }
+                }
+                const {data: user} = await axios.post(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`, {
+                    name: credentials?.username,
+                    password: credentials?.password
+                }, config)
+                if (user != undefined) {
+                    return user
                 } else {
                     return null
                 }
+                // const authUser = await users.find((user: { name: string | undefined }) => user.name === credentials?.username)
+                // console.log(authUser)
+                // if (authUser && authUser.password === credentials?.password) {
+                //     return authUser
+                // } else {
+                //     return null
+                // }
             }
         }),
     ],
