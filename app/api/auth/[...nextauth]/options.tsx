@@ -26,7 +26,8 @@ export const options: NextAuthOptions = {
             async authorize(credentials) {
                 const {data: users} = await axios.get(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`)
                 const authUser = await users.find((user: { name: string | undefined }) => user.name === credentials?.username)
-                if (authUser != null && authUser.password === credentials?.password) {
+                console.log(authUser)
+                if (authUser && authUser.password === credentials?.password) {
                     return authUser
                 } else {
                     return null
