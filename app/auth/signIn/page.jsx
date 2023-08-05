@@ -4,10 +4,6 @@ import {signIn} from "next-auth/react"
 import { useRouter } from 'next/navigation'
 import { Box, Paper, Typography, Button, TextField, Stack } from "@mui/material"
 
-export const metadata = {
-    title: "sing in"
-}
-
 export default function SingIn() {
     const router = useRouter()
     const username = useRef()

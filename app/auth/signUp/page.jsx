@@ -4,13 +4,14 @@ import { Box, Paper, Typography, Button, TextField, Stack } from "@mui/material"
 import axios from "axios"
 import { useRouter } from 'next/navigation'
 
+
 export default function SingIn() {
     const router = useRouter()
     const [error, setError] = useState(false)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [confpassword, setConfPassword] = useState("")
-    const isdisabled = username && password && password === confpassword 
+    const isdisabled = username && password && password === confpassword
 
     const createAccount = async () => {
 
