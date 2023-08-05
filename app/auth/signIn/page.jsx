@@ -12,7 +12,6 @@ export default function SingIn() {
         const res = await signIn("credentials", {
             username: username,
             password: password,
-            redirect: true,
             callbackUrl: "/"
         })
     }
