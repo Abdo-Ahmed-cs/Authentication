@@ -31,7 +31,7 @@ export const options: NextAuthOptions = {
                       "Access-Control-Allow-Origin": "*",
                     }
                 }
-                const {data: user} = await axios.post(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`, {
+                const {data: user} = await axios.post(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users/authUser`, {
                     name: credentials?.username,
                     password: credentials?.password
                 }, config)
