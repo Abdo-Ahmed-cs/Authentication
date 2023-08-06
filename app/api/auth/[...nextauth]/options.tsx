@@ -35,7 +35,8 @@ export const options: NextAuthOptions = {
                     name: credentials?.username,
                     password: credentials?.password
                 }, config)
-                if (user != undefined) {
+                console.log(user === null ? user : "undefined user")
+                if (user) {
                     return user
                 } else {
                     return null

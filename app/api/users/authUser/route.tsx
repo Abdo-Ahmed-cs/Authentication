@@ -10,6 +10,6 @@ export async function POST(request: Request) {
     if (authUser && authUser.password === newUser?.password) {
         return new Response(JSON.stringify(authUser))
     } else {
-        return new Response(undefined)
+        return new Response(null)
     }
 }
