@@ -5,10 +5,10 @@ import GithubProvider from "next-auth/providers/github"
 
 export const options: NextAuthOptions = {
     providers: [
-        // GithubProvider({
-        //     clientId: process.env.GITHUB_CLIENT as string,
-        //     clientSecret: process.env.GITHUB_SECRET as string
-        // }),
+        GithubProvider({
+            clientId: process.env.GITHUB_CLIENT as string,
+            clientSecret: process.env.GITHUB_SECRET as string
+        }),
         CredentialsProvider({
             name: "credential",
             credentials: {
@@ -35,7 +35,7 @@ export const options: NextAuthOptions = {
                     name: credentials?.username,
                     password: credentials?.password
                 }, config)
-                console.log(user === null ? user : "undefined user")
+                console.log(user ? user : "undefined user")
                 if (user) {
                     return user
                 } else {
@@ -51,8 +51,8 @@ export const options: NextAuthOptions = {
             }
         }),
     ],
-    pages: {
-        signIn: "/auth/signIn",
-        // signOut: "/auth/signOut",
-    }
+    // pages: {
+    //     signIn: "/auth/signIn",
+    //     signOut: "/auth/signOut",
+    // }
 }

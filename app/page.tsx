@@ -7,12 +7,7 @@ import { Box, AppBar, Button, Typography, Avatar, Tooltip } from '@mui/material'
 import {Dashboard, CheckCircleOutline} from "@mui/icons-material"
 import {redirect} from "next/navigation"
 export default function Home() {
-  const {data: session} = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/auth/signIn?callbackUrl=/")
-    },
-  })
+  const {data: session} = useSession()
   // console.log(session)
   return (
 <Box component="section" 

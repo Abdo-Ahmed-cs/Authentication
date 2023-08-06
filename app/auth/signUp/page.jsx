@@ -15,7 +15,7 @@ export default function SingIn() {
     const createAccount = async () => {
         const {data: users} = await axios.get(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/users`)
         const isfound = users.find((user) => user.name === username)
-        console.log(isfound)
+        // console.log(isfound)
         if (isfound != null) {
             setError(() => true)
             return

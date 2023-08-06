@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react'
 import {signIn} from "next-auth/react"
 import { useRouter } from 'next/navigation'
-import { Box, Paper, Typography, Button, TextField, Stack } from "@mui/material"
+import { Box, Paper, Typography, Button, TextField, Stack, Divider } from "@mui/material"
 
 export default function SingIn() {
     const router = useRouter()
@@ -24,6 +24,10 @@ export default function SingIn() {
             <Stack spacing={0.7}>
                 <Button variant='contained' color='primary' onClick={login} disableRipple>LogIn</Button>
                 <Button variant='contained' color='primary' onClick={() => router.push("/auth/signUp")} disableRipple>SignUp</Button>
+            </Stack>
+                <Divider>or</Divider>
+            <Stack>
+                <Button sx={{backgroundColor: "#000", color: "white"}} variant='contained' onClick={() => signIn("github")}>Sign in with GITHUB</Button>
             </Stack>
         </Paper>
     </Box>
